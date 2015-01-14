@@ -42,7 +42,14 @@ IO_FRACTION=${IO_FRACTION:-"85"}
 JMX_PORT=${JMX_PORT:-"2101"}
 LOG_LEVEL=${LOG_LEVEL:-"debug"}
 CONTINUE_ON_ERROR=${CONTINUE_ON_ERROR:-"false"}
-JMXTRANS_OPTS="$JMXTRANS_OPTS -Djmxtrans.log.level=${LOG_LEVEL} -Djmxtrans.log.dir=$LOG_DIR"
+
+if [ -n ""$LOG_CONFIG"] && [ -f "$LOG_CONFIG" ]; then
+	LOGCONFIG_OPTS="-Dlog4j.configuration=file://$LOG_CONFIG"
+else
+	LOGCONFIG_OPTS=""
+fi
+
+JMXTRANS_OPTS="$JMXTRANS_OPTS -Djmxtrans.log.level=${LOG_LEVEL} -Djmxtrans.log.dir=$LOG_DIR $LOGCONFIG_OPTS"
 
 
 MONITOR_OPTS=${MONITOR_OPTS:-"-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.port=${JMX_PORT}"}
