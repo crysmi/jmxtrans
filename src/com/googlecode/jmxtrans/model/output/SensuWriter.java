@@ -36,7 +36,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class SensuWriter extends BaseOutputWriter {
 
-	private final Logger logger = LoggerFactory.getLogger(getClass());
+	private final static Logger logger = LoggerFactory.getLogger(SensuWriter.class);
 
 	private final JsonFactory jsonFactory = new JsonFactory();
 

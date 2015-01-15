@@ -62,7 +62,7 @@ public class LibratoWriter extends BaseOutputWriter {
 	public static final String DEFAULT_LIBRATO_API_URL = "https://metrics-api.librato.com/v1/metrics";
 	public static final String SETTING_LIBRATO_API_TIMEOUT_IN_MILLIS = "libratoApiTimeoutInMillis";
 
-	private final org.slf4j.Logger logger = LoggerFactory.getLogger(getClass());
+	private final static org.slf4j.Logger logger = LoggerFactory.getLogger(LibratoWriter.class);
 
 	private final JsonFactory jsonFactory = new JsonFactory();
 	/**

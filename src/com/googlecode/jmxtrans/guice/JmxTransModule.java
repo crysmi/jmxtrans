@@ -33,7 +33,7 @@ import java.net.SocketAddress;
 
 public class JmxTransModule extends AbstractModule {
 
-	private final Logger log = LoggerFactory.getLogger(getClass());
+	private final static Logger log = LoggerFactory.getLogger(JmxTransModule.class);
 
 	private final JmxTransConfiguration configuration;
 

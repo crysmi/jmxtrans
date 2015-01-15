@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class JmxUtils {
 
-	private final Logger log = LoggerFactory.getLogger(getClass());
+	private final static Logger log = LoggerFactory.getLogger(JmxUtils.class);
 
 	/**
 	 * Does the work for processing a Server object.

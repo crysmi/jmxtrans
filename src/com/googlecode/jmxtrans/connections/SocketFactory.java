@@ -12,7 +12,7 @@ import java.net.Socket;
  */
 public class SocketFactory extends BaseKeyedPoolableObjectFactory<InetSocketAddress, Socket> {
 
-	private final Logger log = LoggerFactory.getLogger(getClass());
+	private final static Logger log = LoggerFactory.getLogger(SocketFactory.class);
 
 	/**
 	 * Creates the socket and the writer to go with it.

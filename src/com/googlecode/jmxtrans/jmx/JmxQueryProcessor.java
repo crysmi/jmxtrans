@@ -24,7 +24,7 @@ import com.googlecode.jmxtrans.model.Result;
 import com.googlecode.jmxtrans.model.Server;
 
 public class JmxQueryProcessor {
-	private final Logger log = LoggerFactory.getLogger(getClass());
+	private final static Logger log = LoggerFactory.getLogger(JmxQueryProcessor.class);
 
 	/**
 	 * Responsible for processing individual Queries.
