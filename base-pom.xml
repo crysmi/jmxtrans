@@ -786,6 +786,9 @@
 					<historyOutputFile>${project.build.directory}/pitest-history.xml</historyOutputFile>
 					<jvmArgs>
 						<value>-XX:MaxPermSize=256M</value>
+						<value>-Djmxtrans.log.dir=.</value>
+						<value>-Dmyhost=w2</value>
+						<value>-Dmyport=1099</value>
 					</jvmArgs>
 					<targetClasses>
 						<param>com.googlecode.jmxtrans.*</param>
@@ -799,11 +802,6 @@
 						<avoidCallsTo>java.util.logging</avoidCallsTo>
 						<avoidCallsTo>org.apache.commons.logging</avoidCallsTo>
 					</avoidCallsTo>
-					<systemPropertyVariables>
-						<jmxtrans.log.dir>${project.build.directory}</jmxtrans.log.dir>
-						<myhost>w2</myhost>
-						<myport>1099</myport>
-					</systemPropertyVariables>
 				</configuration>
 			</plugin>
 		</plugins>
