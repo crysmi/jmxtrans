@@ -20,6 +20,7 @@ public class TCPEchoServer {
 
 	private Thread thread = null;
 	private volatile ServerSocket server;
+	private volatile boolean threadRun = false;
 
 	private final Object startSynchro = new Object();
 
@@ -34,7 +35,7 @@ public class TCPEchoServer {
 				try {
 					try {
 						server = closer.register(new ServerSocket(0));
-						while (true) {
+						while (threadRun) {
 							processRequests(server);
 						}
 					} catch (Throwable t) {
@@ -49,6 +50,7 @@ public class TCPEchoServer {
 
 			}
 		});
+		threadRun = true;
 		thread.start();
 		try {
 			synchronized (startSynchro) {
@@ -81,7 +83,9 @@ public class TCPEchoServer {
 
 	public void stop() {
 		checkState(thread != null, "Server not started");
+		threadRun = false;
 		thread.interrupt();
+		thread = null;
 	}
 
 	public InetSocketAddress getLocalSocketAddress()  {
