@@ -16,7 +16,7 @@ import static com.google.common.base.Preconditions.checkState;
 
 public class TCPEchoServer {
 
-	private final Logger log = LoggerFactory.getLogger(getClass());
+	private final static Logger log = LoggerFactory.getLogger(TCPEchoServer.class);
 
 	private Thread thread = null;
 	private volatile ServerSocket server;
@@ -83,9 +83,22 @@ public class TCPEchoServer {
 
 	public void stop() {
 		checkState(thread != null, "Server not started");
+		log.error("TCP echo server stopping");
 		threadRun = false;
-		thread.interrupt();
+		if(server!=null) {
+			try {
+				server.close();
+			} catch (java.io.IOException ioe) {
+				log.error("TCP echo server exception on server close", ioe);
+			}
+		}
+		try {
+			thread.join(10000);
+		} catch (java.lang.InterruptedException interrupted) {
+			log.error("TCP Echo server was interrupted while waiting to stop", interrupted);
+		}
 		thread = null;
+		log.error("TCP echo server stopped");
 	}
 
 	public InetSocketAddress getLocalSocketAddress()  {
