@@ -13,7 +13,7 @@ import com.googlecode.jmxtrans.model.Server;
  */
 public class ProcessQueryThread implements Runnable {
 
-	private final Logger log = LoggerFactory.getLogger(getClass());
+	private final static Logger log = LoggerFactory.getLogger(ProcessQueryThread.class);
 
 	private final MBeanServerConnection mbeanServer;
 	private final Server server;

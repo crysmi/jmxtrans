@@ -59,7 +59,7 @@ import static org.apache.commons.lang.StringUtils.isAlphanumeric;
  */
 public class StackdriverWriter extends BaseOutputWriter {
 
-	private final Logger logger = LoggerFactory.getLogger(getClass());
+	private final static Logger logger = LoggerFactory.getLogger(StackdriverWriter.class);
 	
 	// constant protocol version, this can be updated in future versions for protocol changes
 	public static final int STACKDRIVER_PROTOCOL_VERSION = 1;
