@@ -789,6 +789,8 @@
 						<value>-Djmxtrans.log.dir=${project.build.directory}</value>
 						<value>-Dmyhost=w2</value>
 						<value>-Dmyport=1099</value>
+						<value>-Dlog4j.configuration=test/log4j.xml</value>
+						<value>-Djmxtrans.log.level=DEBUG</value>
 					</jvmArgs>
 					<targetClasses>
 						<param>com.googlecode.jmxtrans.*</param>
