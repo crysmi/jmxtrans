@@ -779,6 +779,9 @@
 					<historyOutputFile>${project.build.directory}/pitest-history.xml</historyOutputFile>
 					<jvmArgs>
 						<value>-XX:MaxPermSize=256M</value>
+						<value>-Djmxtrans.log.dir=${project.build.directory}</value>
+						<value>-Dmyhost=w2</value>
+						<value>-Dmyport=1099</value>
 					</jvmArgs>
 					<targetClasses>
 						<param>com.googlecode.jmxtrans.*</param>
