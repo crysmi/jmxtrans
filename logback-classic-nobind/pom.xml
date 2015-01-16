@@ -44,6 +44,11 @@
 			<plugins>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.3.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-shade-plugin</artifactId>
 					<version>2.3</version>
 				</plugin>
@@ -53,13 +58,25 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+						<phase>compile</phase>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
 				<executions>
 					<execution>
 						<goals>
 							<goal>shade</goal>
 						</goals>
-						<phase>package</phase>
+						<phase>compile</phase>
 						<configuration>
 							<filters>
 								<filter>
@@ -83,7 +100,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
 		</plugins>
 
 	</build>
