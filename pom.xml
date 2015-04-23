@@ -1058,26 +1058,26 @@
 	</reporting>
 
 	<profiles>
-		<profile>
-			<id>withMutationTests</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.pitest</groupId>
-						<artifactId>pitest-maven</artifactId>
-						<executions>
-							<execution>
-								<id>pitest</id>
-								<goals>
-									<goal>mutationCoverage</goal>
-								</goals>
-								<phase>verify</phase>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
+    <profile>
+      <id>withMutationTests</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.pitest</groupId>
+            <artifactId>pitest-maven</artifactId>
+            <executions>
+              <execution>
+                <id>pitest</id>
+                <goals>
+                  <goal>mutationCoverage</goal>
+                </goals>
+                <phase>verify</phase>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
 		<profile>
 			<!--
 				RPM packaging is done in a profile to ensure that it does not impact build on platforms not supporting
