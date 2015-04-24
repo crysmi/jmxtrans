@@ -32,6 +32,7 @@ public class RabbitMQGraphiteWriterTests {
 		try {
 			RabbitMQGraphiteWriter.builder()
 					.setPort(123)
+          .setExchangeName("queuename")
 					.build();
 		} catch (NullPointerException npe) {
 			assertThat(npe).hasMessage("Host cannot be null.");
@@ -39,15 +40,29 @@ public class RabbitMQGraphiteWriterTests {
 		}
 	}
 
-	@Test(expected = NullPointerException.class)
-	public void portIsRequired() throws ValidationException {
-		try {
+  @Test(expected = NullPointerException.class)
+  public void portIsRequired() throws ValidationException {
+    try {
       RabbitMQGraphiteWriter.builder()
-					.setHost("localhost")
-					.build();
-		} catch (NullPointerException npe) {
-			assertThat(npe).hasMessage("Port cannot be null.");
-			throw npe;
-		}
-	}
+              .setHost("localhost")
+              .setExchangeName("queuename")
+              .build();
+    } catch (NullPointerException npe) {
+      assertThat(npe).hasMessage("Port cannot be null.");
+      throw npe;
+    }
+  }
+
+  @Test(expected = NullPointerException.class)
+  public void queuenameIsRequired() throws ValidationException {
+    try {
+      RabbitMQGraphiteWriter.builder()
+              .setHost("localhost")
+              .setPort(123)
+              .build();
+    } catch (NullPointerException npe) {
+      assertThat(npe).hasMessage("queue_name cannot be null.");
+      throw npe;
+    }
+  }
 }
